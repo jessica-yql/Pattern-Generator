@@ -39,6 +39,8 @@ def tube_top_pattern():
 
     hip_incr = hip_sts - waist_sts
     hip_incr_interval = waist_to_hip_rows / (hip_incr/4)
+
+    # Zero division adjustment
     
     pattern = f"""
     Top-Down Tube Top Pattern:
