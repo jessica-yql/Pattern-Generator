@@ -6,7 +6,8 @@ Goal: Construct an application to generate a complete knitting pattern based on 
 - user input knitting gauge
 - basic tube top pattern
 - includes increase/decrease intervals
+- conditional output to avoid zero division error
 
 ## Features to be implemented
-- fix 0 division case
+- inclusive sizing that avoids errors
 - different pattern options
