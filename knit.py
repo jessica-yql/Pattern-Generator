@@ -32,42 +32,49 @@ def tube_top_pattern():
     waist_to_hip_rows = gauge_rows * waist_to_hip
 
     bust_incr = bust_sts - high_bust_sts
-    bust_incr_interval = high_bust_to_bust_rows / (bust_incr/4)
-
     waist_decr = bust_sts - waist_sts
-    waist_decr_interval = bust_to_waist_rows / (waist_decr/4)
-
     hip_incr = hip_sts - waist_sts
     hip_incr_interval = waist_to_hip_rows / (hip_incr/4)
 
     # Cast on
     pattern = f"""
     Top-Down Tube Top Pattern:
-    1. Cast on {int(high_bust_sts) + 1} stitches for the high bust, placing a stitch marker after the {stitch_marker} cast on stitch.
-    2. Join in the round and place a stitch marker. You should now have {int(high_bust_sts)} stitches. 
+        Cast on {int(high_bust_sts) + 1} stitches for the high bust, placing a stitch marker after the {stitch_marker} cast on stitch.
+        Join in the round and place a stitch marker. You should now have {int(high_bust_sts)} stitches. 
     """
 
     # High Bust to Bust
-    if high_bust_to_bust != 0:
+    if bust_incr != 0:
+        bust_incr_interval = high_bust_to_bust_rows / (bust_incr/4)
         incr_1 = f"""
-    3. Knit in the round for {int(bust_incr_interval - 1)} rows.
-    4. On the {add_suffix(int(bust_incr_interval))} row, K1, M1L, then K until 1 stitch before the stitch marker, M1R, K2, M1L, then K until 1 stitch before the stitch marker and M1R.
-    5. Repeat steps 3 and 4 until you have knit {int(high_bust_to_bust_rows)} rows and adjust your stitch count to {int(bust_sts)} stitches.
-        """
+        * Knit in the round for {int(bust_incr_interval - 1)} rows.
+        On the {add_suffix(int(bust_incr_interval))} row, K1, M1L, then K until 1 stitch before the stitch marker, M1R, K2, M1L, then K until 1 stitch before the stitch marker and M1R.*
+        Repeat the steps between the ** until you have knit {int(high_bust_to_bust_rows)} rows and adjust your stitch count to {int(bust_sts)} stitches. 
+        You have knit to the bust. 
+    """
+        pattern += incr_1
+    else: 
+        incr_1 = f"""
+        Knit in the round for {int(high_bust_to_bust_rows)} rows. 
+        You have knit to the bust.
+    """
         pattern += incr_1
     
     # Bust to Waist
-    if bust_to_waist != 0:
+    if waist_decr != 0:
+        waist_decr_interval = bust_to_waist_rows / (waist_decr/4)
         incr_2 = f"""
-    6. Then, knit in the round for {int(waist_decr_interval - 1)} rows.
-    7. On the next row, K1, SSK, then K until 3 stitches before the stitch marker, K2TOG, K2, SSK, then K until 3 before the stitch marker. K2TOG, K1.
-    8. Repeat steps 6 and 7 until you have {int(high_bust_to_bust_rows + bust_to_waist_rows)}, and adjust your stitch count to {int(waist_sts)} stitches.
-        """
+        *Then, knit in the round for {int(waist_decr_interval - 1)} rows.
+        On the next row, K1, SSK, then K until 3 stitches before the stitch marker, K2TOG, K2, SSK, then K until 3 before the stitch marker. K2TOG, K1. *
+        Repeat the steps between the ** until you have {int(high_bust_to_bust_rows + bust_to_waist_rows)}, and adjust your stitch count to {int(waist_sts)} stitches.
+        You have knit to the waist
+    """
         pattern += incr_2
     else:
         incr_2 = f"""
-    3. Knit in the round for {int(high_bust_to_bust_rows + bust_to_waist_rows)} rows.
-        """
+        Knit in the round for {int(high_bust_to_bust_rows + bust_to_waist_rows)} rows. 
+        You have knit to the waist.
+    """
         pattern += incr_2
 
     print(pattern)
