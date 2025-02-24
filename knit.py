@@ -7,35 +7,41 @@ def add_suffix(num):
     return str(num) + suffix
 
 def tube_top_pattern():
-    
+    # Gauge Swatch Input
     gauge_sts = float(input("Enter number of stitches per inch: "))
     gauge_rows = float(input("Enter number of rows per inch: "))
     
+    # Width Measurement Input
     high_bust = float(input("Enter high bust measurement (in): "))
     bust = float(input("Enter bust measurement (in): "))
     waist = float(input("Enter waist measurment (in): "))
     hip = float(input("Enter hip measurment (in): "))
 
-
+    # Length Measurment Input
     high_bust_to_bust = float(input("Enter length from high bust to bust (in): "))    
     bust_to_waist = float(input("Enter length from bust to waist (in): "))
     waist_to_hip = float(input("Enter length from waist to hip (in): "))
     
+    # Width Stitch Count
     high_bust_sts = gauge_sts * high_bust
     stitch_marker = add_suffix(int(high_bust_sts / 2))
     bust_sts = gauge_sts * bust
     waist_sts = gauge_sts * waist
     hip_sts = gauge_sts * hip
 
+    # Length Row Count
     high_bust_to_bust_rows = gauge_rows * high_bust_to_bust
     bust_to_waist_rows = gauge_rows * bust_to_waist
     waist_to_hip_rows = gauge_rows * waist_to_hip
 
+    # Increases Needed
     bust_incr = bust_sts - high_bust_sts
     waist_decr = bust_sts - waist_sts
     hip_incr = hip_sts - waist_sts
 
-    # Cast on
+    # Pattern:
+
+    # Cast On
     pattern = f"""
     Top-Down Tube Top Pattern:
         Cast on {int(high_bust_sts) + 1} stitches for the high bust, placing a stitch marker after the {stitch_marker} cast on stitch.
@@ -98,7 +104,6 @@ def tube_top_pattern():
     pattern += f"""
         Bind off all stitches and weave in all ends.
         """
-
 
     print(pattern)
 
