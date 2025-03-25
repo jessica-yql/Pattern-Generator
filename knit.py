@@ -107,4 +107,29 @@ def tube_top_pattern():
 
     print(pattern)
 
+def interval_retrieval_cm():
+    # Gauge Swatch
+    gauge_sts = float(input("Enter number of stitches per cm: "))
+    gauge_rows = float(input("Enter number of rows per cm: "))
+
+    # Width
+    top = float(input("Enter top measurement (cm): "))
+    bottom = float(input("Enter bottom measurement (cm): "))
+
+    # Length
+    difference = float(input("Enter length from top to bottom (cm): "))
+
+    top_sts = gauge_sts * top
+    bottom_sts = gauge_sts * bottom
+
+    difference_rows = gauge_rows * difference
+
+    change_needed = bottom_sts - top_sts
+
+    if (change_needed) >= 0:
+        
+
+
+
+
 tube_top_pattern()
